@@ -52,7 +52,7 @@ class Dumper
         $prefix = $indent ? str_repeat(' ', $indent) : '';
 
         if ($inline <= 0 || !is_array($input) || empty($input)) {
-            $output .= $prefix.Inline::dump($input, $exceptionOnInvalidType, $objectSupport);
+            $output .= $prefix.Inline::dump($input, $exceptionOnInvalidType, $objectSupport,$prefix.str_repeat(' ',$this->indentation));
         } else {
             $isAHash = array_keys($input) !== range(0, count($input) - 1);
 

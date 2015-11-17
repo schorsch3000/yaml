@@ -58,9 +58,10 @@ class Escaper
      *
      * @return string The quoted, escaped string
      */
-    public static function escapeWithDoubleQuotes($value)
+    public static function escapeWithDoubleQuotes($value,$prefix)
     {
-        return sprintf('"%s"', str_replace(self::$escapees, self::$escaped, $value));
+
+        return "|".str_replace("\n","\n".$prefix,"\n".$value)."\n";
     }
 
     /**

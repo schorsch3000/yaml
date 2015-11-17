@@ -94,7 +94,7 @@ class Inline
      *
      * @throws DumpException When trying to dump PHP resource
      */
-    public static function dump($value, $exceptionOnInvalidType = false, $objectSupport = false)
+    public static function dump($value, $exceptionOnInvalidType = false, $objectSupport = false,$prefix='')
     {
         switch (true) {
             case is_resource($value):
@@ -147,7 +147,7 @@ class Inline
             case '' == $value:
                 return "''";
             case Escaper::requiresDoubleQuoting($value):
-                return Escaper::escapeWithDoubleQuotes($value);
+                return Escaper::escapeWithDoubleQuotes($value,$prefix);
             case Escaper::requiresSingleQuoting($value):
             case preg_match(self::getHexRegex(), $value):
             case preg_match(self::getTimestampRegex(), $value):
